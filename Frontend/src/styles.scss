@@ -3,6 +3,8 @@
 @import "./app/views/shared/styles/variables";
 @import "./app/views/shared/styles/mixins";
 
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+
 *,
 *::after,
 *::before {
@@ -36,7 +38,8 @@ html {
 }
 
 body {
-  font-family: "Times New Roman", Times, serif;
+  // font-family: "Times New Roman", Times, serif;
+  font-family: 'Cormorant', serif;
   box-sizing: border-box;
   min-height: 100vh;
   min-width: 100vw;
@@ -53,3 +56,11 @@ body {
   }
 }
 
+.container {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(6rem, 1fr)
+    [center-start] repeat(12, [col-start] minmax(min-content, 10rem) [col-end])
+    [center-end] minmax(6rem, 1fr)
+    [full-end];
+}
