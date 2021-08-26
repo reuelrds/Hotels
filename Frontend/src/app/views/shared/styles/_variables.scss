@@ -1,4 +1,4 @@
-$color-primary: #274F81;
+$color-primary: #274f81;
 $color-text-light: #a6bcd0;
 $color-text-dark: #4e5d6a;
 
@@ -8,3 +8,70 @@ $color-text: #748a9d;
 $color-light-grey: #dbe2ed;
 
 $color-darker-grey: #404e5a;
+
+$primarypalette: (
+  50: #e5eaf0,
+  100: #becad9,
+  200: #93a7c0,
+  300: #6884a7,
+  400: #476994,
+  500: #274f81,
+  600: #234879,
+  700: #1d3f6e,
+  800: #173664,
+  900: #0e2651,
+  A100: #88aeff,
+  A200: #558bff,
+  A400: #2268ff,
+  A700: #0857ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$accentpalette: (
+  50: #f8f0ea,
+  100: #efdacc,
+  200: #e4c2aa,
+  300: #d9a987,
+  400: #d0966e,
+  500: #c88454,
+  600: #c27c4d,
+  700: #bb7143,
+  800: #b4673a,
+  900: #a75429,
+  A100: #ffefe8,
+  A200: #ffcdb5,
+  A400: #ffaa82,
+  A700: #ff9869,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
