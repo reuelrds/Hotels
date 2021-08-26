@@ -14,7 +14,8 @@
 
     grid-column: full-start / full-end;
 
-    background: url("/assets/images/hero.jpg");
+    background: linear-gradient(to right, $color-primary, transparent),
+      url("/assets/images/hero.jpg");
     background-size: cover;
     background-position-y: bottom;
 
@@ -59,10 +60,22 @@
     }
 
     &-buttons {
-
       & button {
         margin: 0 1rem;
       }
     }
+  }
+
+  &__header {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    grid-column: center-start / center-end;
+
+    font-size: 3.2rem;
+    font-weight: 400;
+
+    background: linear-gradient(to right, $color-primary, transparent),
+      url("/assets/images/hero.jpg");
+    background-size: cover;
   }
 }
