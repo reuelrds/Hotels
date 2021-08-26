@@ -45,13 +45,14 @@
 
     &-pseudo-item,
     &-buttons {
-        flex: 1
+        flex: 1;
     }
-
+    
     &-buttons {
         display: flex;
         justify-content: flex-end;
-      & button {
+        & button {
+          padding: 0.2rem 2rem;
         margin: 0 1rem;
         color: #fff;
       }
