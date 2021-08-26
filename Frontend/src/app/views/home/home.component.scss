@@ -1,51 +1,61 @@
 @import "../shared/styles/variables";
 
 .home {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+
+  grid-template-rows: auto 1fr;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    grid-column: full-start / full-end;
+
+    background: url("/assets/images/hero.jpg");
+    background-size: cover;
+    background-position-y: bottom;
+
+    background-repeat: no-repeat;
+    height: 70vh;
     width: 100vw;
-    min-height: 100vh;
-    position: relative;
-    
 
-    &__background {
-        position: absolute;
-        top: 0;
-        left: 0;
+    z-index: -1;
+  }
 
-        grid-column: full-start / full-end;
-        
-        background: url("/assets/images/hero.jpg");
-        background-size: cover;
-        background-position-y: bottom;
-    
-        background-repeat: no-repeat;
-        height: 70vh;
-        width: 100vw;
-        z-index: -1;
+  &__nav {
+    margin-top: 5rem;
+    grid-column: center-start / center-end;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+
+    &-header {
+      display: flex;
+      align-items: center;
+
+      & h1 {
+        color: $color-primary;
+        font-size: 4rem;
+        font-weight: 700;
+      }
     }
 
-    &__nav {
-        margin-top: 5rem;
-        grid-column: center-start / center-end;
+    &-logo {
+      width: 4rem;
+      height: 4rem;
+      margin-right: 1.5rem;
 
-        &-logo {
-            width: 3rem;
-            height: 3rem;
-            display: flex;
-            align-items: center;
-
-            & img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
-                margin-right: 2rem;
-            }
-
-            & h1 {
-                color: $color-primary;
-                font-size: 3rem;
-                font-weight: 600;
-            }   
-        }
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
     }
+  }
 }

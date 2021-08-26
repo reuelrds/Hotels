@@ -3,7 +3,7 @@
 @import "./app/views/shared/styles/variables";
 @import "./app/views/shared/styles/mixins";
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;700&display=swap");
 
 *,
 *::after,
@@ -16,30 +16,29 @@
 html {
   font-size: 62.5%; //1 rem = 10px; 10px/16px=62.5%
 
-    @include respond('big-desktop') {
-        font-size: 75%;    //1 rem = 12px; 12px/16px=75%
-    }
+  @include respond("big-desktop") {
+    font-size: 75%; //1 rem = 12px; 12px/16px=75%
+  }
 
-    @include respond('tab-land') {
-        font-size: 56.25%;    //1 rem = 9px; 9px/16px=56.25%
-    }
+  @include respond("tab-land") {
+    font-size: 56.25%; //1 rem = 9px; 9px/16px=56.25%
+  }
 
-    @include respond('tab-pot') {
-        font-size: 50%;    //1 rem = 8px; 8px/16px=50%
-    }
+  @include respond("tab-pot") {
+    font-size: 50%; //1 rem = 8px; 8px/16px=50%
+  }
 
-
-    @include respond('phone') {
-        font-size: 43.75%;    //1 rem = 7px; 7px/16px=43.75%
-    }
-    @include respond('phone-m') {
-        font-size: 31.25%;    //1 rem = 5px; 5px/16px=31.25%
-    }
+  @include respond("phone") {
+    font-size: 43.75%; //1 rem = 7px; 7px/16px=43.75%
+  }
+  @include respond("phone-m") {
+    font-size: 31.25%; //1 rem = 5px; 5px/16px=31.25%
+  }
 }
 
 body {
   // font-family: "Times New Roman", Times, serif;
-  font-family: 'Cormorant', serif;
+  font-family: "Cormorant", serif;
   box-sizing: border-box;
   min-height: 100vh;
   min-width: 100vw;
