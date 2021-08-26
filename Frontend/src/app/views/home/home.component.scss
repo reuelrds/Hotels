@@ -57,5 +57,12 @@
         object-position: center;
       }
     }
+
+    &-buttons {
+
+      & button {
+        margin: 0 1rem;
+      }
+    }
   }
 }
