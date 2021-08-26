@@ -1,30 +1,13 @@
 @import "../shared/styles/variables";
 
 .home {
-  width: 100vw;
-  min-height: 100vh;
-  position: relative;
-
-  grid-template-rows: auto 1fr;
-
-  &__background {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    grid-column: full-start / full-end;
-
-    background: linear-gradient(to right, $color-primary, transparent),
-      url("/assets/images/hero.jpg");
-    background-size: cover;
-    background-position-y: bottom;
-
-    background-repeat: no-repeat;
-    height: 70vh;
     width: 100vw;
-
-    z-index: -1;
-  }
+    min-height: 100vh;
+    position: relative;
+    
+    grid-template-rows: auto 1fr;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, transparent), url("/assets/images/hero.jpg");
+    background-size: cover;
 
   &__nav {
     margin-top: 5rem;
@@ -33,7 +16,7 @@
     display: flex;
     align-items: center;
 
-    justify-content: space-between;
+    justify-content: center;
 
     &-header {
       display: flex;
@@ -43,6 +26,7 @@
         color: $color-primary;
         font-size: 4rem;
         font-weight: 700;
+        // text-transform: uppercase;
       }
     }
 
@@ -59,23 +43,46 @@
       }
     }
 
+    &-pseudo-item,
     &-buttons {
+        flex: 1
+    }
+
+    &-buttons {
+        display: flex;
+        justify-content: flex-end;
       & button {
         margin: 0 1rem;
+        color: #fff;
       }
     }
   }
 
   &__header {
-    margin-top: 5rem;
+    margin-top: 10rem;
     margin-bottom: 10rem;
     grid-column: center-start / center-end;
 
-    font-size: 3.2rem;
-    font-weight: 400;
+    & h1 {
 
-    background: linear-gradient(to right, $color-primary, transparent),
-      url("/assets/images/hero.jpg");
-    background-size: cover;
+        font-size: 3.8rem;
+        font-weight: 700;
+    }
+
+
+    &-sub {
+
+
+        display: inline-block;
+
+        font-size: 6.4rem;
+        font-weight: 300;
+        margin-top: 1rem;
+ 
+    }
+
+
+
+    
   }
 }
