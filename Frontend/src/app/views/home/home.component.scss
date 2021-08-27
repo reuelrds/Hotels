@@ -1,17 +1,22 @@
 @import "../shared/styles/variables";
 
 .home {
-    width: 100vw;
-    min-height: 100vh;
-    position: relative;
-    
-    grid-template-rows: auto 1fr;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, transparent), url("/assets/images/hero.jpg");
-    background-size: cover;
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+
+  grid-template-rows: auto auto 1fr;
+  background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.5) 0%,
+      transparent
+    ),
+    url("/assets/images/hero.jpg");
+  background-size: cover;
 
   &__nav {
     margin-top: 5rem;
-    grid-column: center-start / center-end;
+    grid-column: full-start / full-end;
 
     display: flex;
     align-items: center;
@@ -45,14 +50,16 @@
 
     &-pseudo-item,
     &-buttons {
-        flex: 1;
+      flex: 1;
     }
-    
+
     &-buttons {
-        display: flex;
-        justify-content: flex-end;
-        & button {
-          padding: 0.2rem 2rem;
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 5rem;
+
+      & button {
+        padding: 0.2rem 2rem;
         margin: 0 1rem;
         color: #fff;
       }
@@ -64,26 +71,74 @@
     margin-bottom: 10rem;
     grid-column: center-start / center-end;
 
+    color: $color-primary;
+    // font-family: "EB Garamond", serif;
+
     & h1 {
-
-        font-size: 3.8rem;
-        font-weight: 700;
+      font-size: 3.8rem;
+      font-weight: 700;
     }
-
 
     &-sub {
+      display: inline-block;
 
+      font-size: 6.4rem;
+      font-weight: 300;
+      margin-top: 1rem;
+    }
+  }
 
-        display: inline-block;
+  &-search {
+    margin-top: 5rem;
+    height: 25rem;
+    // background-color: rgba(255, 255, 255, 0.15);
+    // backdrop-filter: blur(5px);
+    background-color: $color-primary;
+    color: #fff;
 
-        font-size: 6.4rem;
-        font-weight: 300;
-        margin-top: 1rem;
- 
+    grid-column: center-start / center-end;
+    border-radius: 1rem;
+    box-shadow: 0 1.5px 2.5px rgba(0, 0, 0, 0.163),
+      0 3.5px 6.1px rgba(0, 0, 0, 0.234), 0 6.6px 11.4px rgba(0, 0, 0, 0.29),
+      0 11.8px 20.3px rgba(0, 0, 0, 0.346), 0 22.1px 38px rgba(0, 0, 0, 0.417),
+      0 53px 91px rgba(0, 0, 0, 0.58);
+
+    padding: 4rem 6rem;
+    position: relative;
+
+    &__header {
+      height: 20%;
+      display: inline-block;
+
+      h2 {
+        font-size: 3.2rem;
+        font-weight: 400;
+      }
     }
 
+    &__button {
+      padding: 2rem 5rem;
+      border-radius: 1rem;
+      background-color: $color-secondary;
+      color: #fff;
+      border: none;
+      box-shadow: 0 1.5px 2.5px rgba(0, 0, 0, 0.163),
+        0 3.5px 6.1px rgba(0, 0, 0, 0.234), 0 6.6px 11.4px rgba(0, 0, 0, 0.29),
+        0 11.8px 20.3px rgba(0, 0, 0, 0.346), 0 22.1px 38px rgba(0, 0, 0, 0.417),
+        0 53px 91px rgba(0, 0, 0, 0.58);
 
+      position: absolute;
+      bottom: -10%;
+      right: 6rem;
 
-    
+      font-size: 2rem;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      display: inline-flex;
+      align-items: center;
+
+      & mat-icon {
+        margin-left: 2rem;
+      }
+    }
   }
 }
