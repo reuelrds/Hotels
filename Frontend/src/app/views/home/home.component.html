@@ -28,7 +28,26 @@
       <h2>Where To?</h2>
     </div>
 
-    <div class="home-search__body"></div>
+    <div class="home-search__body">
+      <form class="home__form">
+        <div class="form__group">
+          <input
+            type="text"
+            class="form__input"
+            placeholder="e.g. Santorini, Greece"
+            id="name"
+          />
+          <label for="name" class="form__label">Destination</label>
+          <mat-icon>search</mat-icon>
+        </div>
+
+        <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu> -->
+      </form>
+    </div>
 
     <button class="home-search__button">
       Search Hotels

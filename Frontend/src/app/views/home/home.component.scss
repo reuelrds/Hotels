@@ -142,5 +142,30 @@
         margin-left: 2rem;
       }
     }
+
+    &__body {
+      margin-top: 3rem;
+    }
+  }
+
+  &__form {
+    color: #000;
+
+    display: flex;
+    flex: 1;
+
+    & div:first-child {
+      position: relative;
+
+      & input {
+        padding-left: 5rem;
+      }
+
+      & mat-icon {
+        position: absolute;
+        top: 18.5%;
+        left: 5%;
+      }
+    }
   }
 }
