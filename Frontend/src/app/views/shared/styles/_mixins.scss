@@ -24,6 +24,11 @@
         @content;
       }
     }
+    @if $breakpoint == 'laptop' {
+      @media only screen and (max-width: 90em) {
+        @content;
+      }
+    }
     @if $breakpoint == 'big-desktop' {
       @media only screen and (min-width: 200em) {
         @content;
