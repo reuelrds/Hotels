@@ -146,3 +146,9 @@ cython_debug/
 
 # Ignore Virtual env
 scrapperenv/
+
+# Ignore VSCode files
+.vscode/
+
+# Ignore Database file
+*.db

@@ -11,8 +11,6 @@ def process_amenities(text):
     amenities_dict = json.loads(text)
     amenities = amenities_dict["load"][-1]["amenities"]
 
-    print(f"AMENITIE: {amenities.keys()}")
-
     amenities.pop("nonHighlightedAmenities")
 
     return amenities
