@@ -1,13 +1,14 @@
 import json
+import re
 
 
-def process_description(text_list):
-    description_dict = json.loads(text_list[0])
+def process_description(text):
+    description_dict = json.loads(text)
     return description_dict["load"][-1]["locationDescription"]
 
 
-def process_amenities(text_list):
-    amenities_dict = json.loads(text_list[0])
+def process_amenities(text):
+    amenities_dict = json.loads(text)
     amenities = amenities_dict["load"][-1]["amenities"]
 
     print(f"AMENITIE: {amenities.keys()}")
@@ -15,3 +16,19 @@ def process_amenities(text_list):
     amenities.pop("nonHighlightedAmenities")
 
     return amenities
+
+
+def strip_currency_symbol(text):
+    return re.sub(r"[$]", '', text)
+
+
+def get_review_count(text):
+    return text.split()[0]
+
+
+def to_int(text):
+    return int(text)
+
+
+def to_float(text):
+    return float(text)

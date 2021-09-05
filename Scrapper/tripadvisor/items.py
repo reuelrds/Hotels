@@ -6,7 +6,7 @@
 import json
 import scrapy
 
-from itemloaders.processors import TakeFirst
+from itemloaders.processors import MapCompose, TakeFirst
 from tripadvisor.utils import preprocessers
 
 
@@ -19,19 +19,28 @@ class HotelItem(scrapy.Item):
         output_processor=TakeFirst()
     )
     unit_price = scrapy.Field(
+        input_processor=MapCompose(
+            preprocessers.strip_currency_symbol,
+            preprocessers.to_int,
+        ),
         output_processor=TakeFirst()
     )
     rating = scrapy.Field(
+        input_processor=MapCompose(preprocessers.to_float),
         output_processor=TakeFirst()
     )
     review_count = scrapy.Field(
+        input_processor=MapCompose(
+            preprocessers.get_review_count,
+            preprocessers.to_int,
+        ),
         output_processor=TakeFirst()
     )
     description = scrapy.Field(
-        input_processor=preprocessers.process_description,
+        input_processor=MapCompose(preprocessers.process_description),
         output_processor=TakeFirst()
     )
     amenities = scrapy.Field(
-        input_processor=preprocessers.process_amenities,
+        input_processor=MapCompose(preprocessers.process_amenities),
         output_processor=TakeFirst()
     )
