@@ -1,26 +1,43 @@
 import scrapy
 from scrapy.loader import ItemLoader
 
+from scrapy_selenium import SeleniumRequest
+
 from tripadvisor.items import HotelItem
+from tripadvisor.utils import dataloader
+
 
 
 class HotelsSpider(scrapy.Spider):
     name = "hotels"
 
-    start_urls = ['http://localhost:8080/index.html']
+    def __init__(self, urls_filepath=None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
-    def __init__(self):
-        super().__init__()
+        self.start_urls = dataloader.read_xlsx(urls_filepath)
+        self.start_urls = [self.start_urls[0]]
+
+    def start_requests(self):
+        for url in self.start_urls:
+            yield SeleniumRequest(url=url, callback=self.parse, wait_time=10)
 
     def parse(self, response, **kwargs):
         self.logger.info("First Spider working")
 
         loader = ItemLoader(item=HotelItem(), response=response)
 
-        loader.add_css("rating", '.bvcwU.P::text')
-        loader.add_css("unit_price", '.cGGHC.Wi.Wa::text')
-        loader.add_css("review_count", '.btQSs.q.Wi.z.Wc::text')
-
+        loader.add_xpath(
+            "rating",
+            '//*[@id="ABOUT_TAB"]/div[2]/div[1]/div[1]/span/text()'
+        )
+        loader.add_xpath(
+            "review_count",
+            '//*[@id="component_5"]/div/div/div[1]/div[2]/a/span[2]/text()'
+        )
+        loader.add_xpath(
+            "unit_price",
+            '//*[@id="bor_book_link_32457022"]/div/div[2]/div[1]/text()'
+        )
         loader.add_xpath(
             "name",
             '//*[@id="HEADING"]/text()'

@@ -152,3 +152,6 @@ scrapperenv/
 
 # Ignore Database file
 *.db
+
+# Ignore URLs File
+files/
