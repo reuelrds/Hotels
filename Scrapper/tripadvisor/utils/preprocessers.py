@@ -3,8 +3,9 @@ import re
 
 
 def process_description(text):
-    description_dict = json.loads(text)
-    return description_dict["load"][-1]["locationDescription"]
+    # description_dict = json.loads(text)
+    # return description_dict["load"][-1]["locationDescription"]
+    return text
 
 
 def process_amenities(text):

@@ -24,10 +24,10 @@ class Hotel(BaseModel):
         null=True,
         verbose_name="Hotel Address",
     )
-    unit_price = peewee.IntegerField(
-        null=True,
-        verbose_name="Price for a Single Room",
-    )
+    # unit_price = peewee.IntegerField(
+    #     null=True,
+    #     verbose_name="Price for a Single Room",
+    # )
     rating = peewee.FloatField(
         null=True,
         verbose_name="Hotel Rating",
@@ -40,7 +40,7 @@ class Hotel(BaseModel):
         null=True,
         verbose_name="Hotel Description",
     )
-    amenities = peewee.TextField(
-        null=True,
-        verbose_name="Hotel Amenities",
-    )
+    # amenities = peewee.TextField(
+    #     null=True,
+    #     verbose_name="Hotel Amenities",
+    # )

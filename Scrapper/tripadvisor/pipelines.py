@@ -26,17 +26,28 @@ class TripadvisorPipeline:
     def process_item(self, item, spider):
 
         with database.atomic() as txn:
+
             try:
                 Hotel.create(
                     id=uuid.uuid4().hex,
                     name=item["name"],
                     address=item["address"],
-                    unit_price=item["unit_price"],
+                    # unit_price=item["unit_price"],
                     rating=item["rating"],
                     review_count=item["review_count"],
                     description=item["description"],
-                    amenities=item["amenities"]
+                    # amenities=item["amenities"]
                 )
+                # Hotel.create(
+                #     id=uuid.uuid4().hex,
+                #     name=item["name"],
+                #     address=item["address"],
+                #     unit_price=item["unit_price"],
+                #     rating=item["rating"],
+                #     review_count=item["review_count"],
+                #     description=item["description"],
+                #     amenities=item["amenities"]
+                # )
 
                 txn.commit()
 
