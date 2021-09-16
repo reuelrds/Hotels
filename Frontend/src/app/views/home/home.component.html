@@ -41,6 +41,51 @@
           <mat-icon>search</mat-icon>
         </div>
 
+        <div class="form__group">
+          <input
+            placeholder="Check-In Date"
+            matInput
+            class="form__input checkInField"
+            [matDatepicker]="checkInPicker"
+          />
+          <label for="name" class="form__label">Check-In Date</label>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="checkInPicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #checkInPicker color="accent"></mat-datepicker>
+        </div>
+
+        <div class="form__group">
+          <input
+            placeholder="Check-Out Date"
+            matInput
+            class="form__input checkOutField"
+            [matDatepicker]="checkOutPicker"
+          />
+          <label for="name" class="form__label">Check-Out Date</label>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="checkOutPicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #checkOutPicker color="accent"></mat-datepicker>
+        </div>
+
+        <div class="form__group guests">
+          <div class="guests-field">
+            <div class="guests-field__label">Guests</div>
+            <div class="guests-field__count">
+              {{ room_count }} Room, {{ guest_count }} Guests
+            </div>
+            <mat-icon class="guest-icon">people</mat-icon>
+          </div>
+        </div>
+
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+
         <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>Item 1</button>

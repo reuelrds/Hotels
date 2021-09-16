@@ -1,18 +1,21 @@
 .form {
-  &__group:not(:last-child) {
-    margin-bottom: 2rem;
+  &__group {
+    position: relative;
+    // margin-bottom: 2rem;
   }
 
   &__input {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-family: inherit;
     color: inherit;
     padding: 1.5rem 2rem;
+    padding-top: 2.5rem;
     border-radius: 0.5rem;
     background-color: rgba($color-white, 1);
     border: none;
     border-bottom: 3px solid transparent;
     // width: 90%;
+    height: 100%;
     display: block;
     transition: all 0.3s;
 
@@ -31,25 +34,29 @@
     }
 
     &::-webkit-input-placeholder {
-      color: $color-black;
-      font-weight: 700;
-      font-size: 1.6rem;
+      color: $color-black !important;
+      font-size: 1.6rem !important;
     }
   }
 
   &__label {
-    font-size: 1.8rem;
     font-weight: 700;
     margin-left: 2rem;
     margin-top: 0.7rem;
     display: block;
     transition: all 0.3s;
-    color: #fff;
+    color: #000;
+    font-size: 1.2rem;
+    position: absolute;
+
+    top: 10%;
   }
 
   &__input:placeholder-shown + &__label {
     opacity: 0;
+    font-size: 1.8rem;
+    top: 50%;
+    left: 0;
     visibility: hidden;
-    transform: translateY(-4rem);
   }
 }

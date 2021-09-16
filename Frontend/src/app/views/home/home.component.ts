@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  room_count = 1;
+  guest_count = 2;
+
   constructor() {}
 
   ngOnInit(): void {}
