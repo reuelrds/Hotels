@@ -15,9 +15,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
+import { AuthComponent } from './views/auth/auth.component';
+import { NavbarComponent } from './views/shared/navbar/navbar.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, AuthComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
