@@ -1,0 +1,126 @@
+@import "../shared/styles/variables";
+
+.auth {
+  min-height: 100vh;
+  font-family: "Cormorant", serif;
+
+  place-items: center;
+  position: relative;
+
+  background-color: rgba($color-text-light, 0.2);
+
+  &__logo {
+    margin-bottom: 5rem;
+  }
+
+  &-login__form {
+    grid-column: full-start / col-end 4;
+  }
+  &-signup__form {
+    grid-column: col-start 9 / full-end;
+  }
+
+  &-form {
+    height: 100%;
+    width: 50%;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__header {
+      & h1 {
+        font-size: 3.2rem;
+        font-weight: 700;
+        margin-bottom: 3rem;
+      }
+
+      & p {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        width: 90%;
+        margin: auto;
+      }
+    }
+
+    &__login {
+      margin: 5rem 0;
+      width: 100%;
+
+      & > * {
+        display: block;
+      }
+
+      &-button {
+        width: 100%;
+        margin-top: 2rem;
+      }
+    }
+
+    &__signup-prompt {
+      & p {
+        display: inline-block;
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  &-overlay {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    grid-column: col-start 5 / full-end;
+    // grid-column: full-start / col-end 8;
+
+    &__wrapper {
+      width: 100%;
+      height: 100%;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+
+  &__nav {
+    margin: 5rem 0;
+    grid-column: full-start / full-end;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+
+    &-header {
+      display: flex;
+      align-items: center;
+
+      font-family: "Cormorant", serif;
+
+      & h1 {
+        color: $color-primary;
+        font-size: 4rem;
+        font-weight: 700;
+        // text-transform: uppercase;
+      }
+    }
+
+    &-logo {
+      width: 4rem;
+      height: 4rem;
+      margin-right: 1.5rem;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+}
