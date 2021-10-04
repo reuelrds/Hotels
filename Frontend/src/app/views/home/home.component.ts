@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'hotels-home',
@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+
   room_count = 1;
   guest_count = 2;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  openGuestsMenu(){}
 }

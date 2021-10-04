@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatRippleModule } from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -32,6 +33,7 @@ import { NavbarComponent } from './views/shared/navbar/navbar.component';
     MatDatepickerModule,
     MatMenuModule,
     MatNativeDateModule,
+    MatRippleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

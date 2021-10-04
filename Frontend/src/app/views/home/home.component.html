@@ -72,13 +72,68 @@
         </div>
 
         <div class="form__group guests">
-          <div class="guests-field">
+          <div
+            class="guests-field"
+            matRipple
+            #menuTrigger="matMenuTrigger"
+            [matMenuTriggerFor]="menu"
+            (click)="menuTrigger.openMenu()"
+          >
             <div class="guests-field__label">Guests</div>
             <div class="guests-field__count">
               {{ room_count }} Room, {{ guest_count }} Guests
             </div>
             <mat-icon class="guest-icon">people</mat-icon>
           </div>
+          <mat-menu #menu="matMenu">
+            <div class="matMenu__container">
+              <div class="matMenu__header">Guests & Rooms</div>
+              <div class="matMenu-group" (click)="$event.stopPropagation()">
+                <div class="matMenu-group__title">
+                  <mat-icon color="accent">person</mat-icon>
+                  Guests
+                </div>
+                <div class="matMenu__counter">
+                  <button mat-icon-button>
+                    <mat-icon>remove_circle_outline</mat-icon>
+                  </button>
+                  <input
+                    type="text"
+                    name="Guests"
+                    id="guests"
+                    class="matMenu__input"
+                  />
+                  <button mat-icon-button>
+                    <mat-icon>add_circle_outline</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="matMenu-group" (click)="$event.stopPropagation()">
+                <div class="matMenu-group__title">
+                  <mat-icon color="accent">bed</mat-icon>
+                  Rooms
+                </div>
+                <div class="matMenu__counter">
+                  <button mat-icon-button>
+                    <mat-icon>remove_circle_outline</mat-icon>
+                  </button>
+                  <input
+                    type="text"
+                    name="Rooms"
+                    id="rooms"
+                    class="matMenu__input"
+                  />
+                  <button mat-icon-button>
+                    <mat-icon>add_circle_outline</mat-icon>
+                  </button>
+                </div>
+              </div>
+
+              <button mat-raised-button color="primary" class="matMenu__button">
+                Done
+              </button>
+            </div>
+          </mat-menu>
         </div>
 
         <!-- <mat-form-field appearance="fill">
