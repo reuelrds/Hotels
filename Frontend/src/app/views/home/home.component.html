@@ -29,13 +29,14 @@
     </div>
 
     <div class="home-search__body">
-      <form class="home__form">
+      <form [formGroup]="searchForm" class="home__form">
         <div class="form__group">
           <input
             type="text"
             class="form__input"
             placeholder="e.g. Santorini, Greece"
             id="name"
+            formControlName="destination"
           />
           <label for="name" class="form__label">Destination</label>
           <mat-icon>search</mat-icon>
@@ -47,6 +48,7 @@
             matInput
             class="form__input checkInField"
             [matDatepicker]="checkInPicker"
+            formControlName="checkinDate"
           />
           <label for="name" class="form__label">Check-In Date</label>
           <mat-datepicker-toggle
@@ -62,6 +64,7 @@
             matInput
             class="form__input checkOutField"
             [matDatepicker]="checkOutPicker"
+            formControlName="checkoutDate"
           />
           <label for="name" class="form__label">Check-Out Date</label>
           <mat-datepicker-toggle
@@ -90,31 +93,11 @@
               <div class="matMenu__header">Guests & Rooms</div>
               <div class="matMenu-group" (click)="$event.stopPropagation()">
                 <div class="matMenu-group__title">
-                  <mat-icon color="accent">person</mat-icon>
-                  Guests
-                </div>
-                <div class="matMenu__counter">
-                  <button mat-icon-button>
-                    <mat-icon>remove_circle_outline</mat-icon>
-                  </button>
-                  <input
-                    type="text"
-                    name="Guests"
-                    id="guests"
-                    class="matMenu__input"
-                  />
-                  <button mat-icon-button>
-                    <mat-icon>add_circle_outline</mat-icon>
-                  </button>
-                </div>
-              </div>
-              <div class="matMenu-group" (click)="$event.stopPropagation()">
-                <div class="matMenu-group__title">
                   <mat-icon color="accent">bed</mat-icon>
                   Rooms
                 </div>
                 <div class="matMenu__counter">
-                  <button mat-icon-button>
+                  <button mat-icon-button (click)="decreaseCount('rooms')">
                     <mat-icon>remove_circle_outline</mat-icon>
                   </button>
                   <input
@@ -122,34 +105,46 @@
                     name="Rooms"
                     id="rooms"
                     class="matMenu__input"
+                    formControlName="rooms"
                   />
-                  <button mat-icon-button>
+                  <button mat-icon-button (click)="increaseCount('rooms')">
+                    <mat-icon>add_circle_outline</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="matMenu-group" (click)="$event.stopPropagation()">
+                <div class="matMenu-group__title">
+                  <mat-icon color="accent">person</mat-icon>
+                  Guests
+                </div>
+                <div class="matMenu__counter">
+                  <button mat-icon-button (click)="decreaseCount('guests')">
+                    <mat-icon>remove_circle_outline</mat-icon>
+                  </button>
+                  <input
+                    type="text"
+                    name="Guests"
+                    id="guests"
+                    class="matMenu__input"
+                    formControlName="guests"
+                  />
+                  <button mat-icon-button (click)="increaseCount('guests')">
                     <mat-icon>add_circle_outline</mat-icon>
                   </button>
                 </div>
               </div>
 
-              <button mat-raised-button color="primary" class="matMenu__button">
+              <button mat-raised-button color="primary" class="matMenu__button" (click)="updateRoomsAndGuests()">
                 Done
               </button>
             </div>
           </mat-menu>
         </div>
 
-        <!-- <mat-form-field appearance="fill">
-          <mat-label>Choose a date</mat-label>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field> -->
-
-        <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>Item 1</button>
-          <button mat-menu-item>Item 2</button>
-        </mat-menu> -->
       </form>
     </div>
 
-    <button class="home-search__button">
+    <button class="home-search__button" (click)="onFormSubmit()">
       Search Hotels
       <mat-icon>trending_flat</mat-icon>
     </button>
