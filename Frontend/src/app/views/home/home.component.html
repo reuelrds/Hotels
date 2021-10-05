@@ -11,8 +11,12 @@
 
     <!-- Nav Buttons -->
     <div class="home__nav-buttons">
-      <button mat-raised-button color="accent">Sign in</button>
-      <button mat-raised-button color="primary">Sign Up</button>
+      <button mat-raised-button color="accent" routerLink="auth/login">
+        Sign in
+      </button>
+      <button mat-raised-button color="primary" routerLink="auth/signup">
+        Sign Up
+      </button>
     </div>
   </nav>
 
@@ -134,13 +138,17 @@
                 </div>
               </div>
 
-              <button mat-raised-button color="primary" class="matMenu__button" (click)="updateRoomsAndGuests()">
+              <button
+                mat-raised-button
+                color="primary"
+                class="matMenu__button"
+                (click)="updateRoomsAndGuests()"
+              >
                 Done
               </button>
             </div>
           </mat-menu>
         </div>
-
       </form>
     </div>
 
