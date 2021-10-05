@@ -1,100 +1,135 @@
 <div class="auth container">
-  <div class="auth-form auth-login__form">
-    <div class="auth__logo">
-      <div class="auth__nav-header">
-        <figure class="auth__nav-logo">
-          <img src="/assets/svg/logo.svg" alt="Hotels Logo" />
-        </figure>
-        <h1>Hotels</h1>
+  <div
+    class="auth-form auth-login__form"
+    [ngClass]="{ hideForm: !isLoginFormVisible }"
+  >
+    <div
+      class="auth-form-container"
+      [ngClass]="{ hideFormContainer: !isLoginFormVisible }"
+    >
+      <div class="auth__logo">
+        <div class="auth__nav-header">
+          <figure class="auth__nav-logo">
+            <img src="/assets/svg/logo.svg" alt="Hotels Logo" />
+          </figure>
+          <h1>Hotels</h1>
+        </div>
       </div>
-    </div>
 
-    <div class="auth-form__header">
-      <h1>Sign In</h1>
-      <p>Welcome Back!</p>
-      <p>Sign In to get the best hotel recommendations for your next trip.</p>
-    </div>
+      <div class="auth-form__header">
+        <h1>Sign In</h1>
+        <p>Welcome Back!</p>
+        <p>Sign In to get the best hotel recommendations for your next trip.</p>
+      </div>
 
-    <form class="auth-form__login">
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" />
-      </mat-form-field>
+      <form class="auth-form__login">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" />
+        </mat-form-field>
 
-      <button class="auth-form__login-button" mat-raised-button color="primary">
-        Sign in
-      </button>
-    </form>
+        <button
+          class="auth-form__login-button"
+          mat-raised-button
+          color="primary"
+        >
+          Sign in
+        </button>
+      </form>
 
-    <div class="auth-form__signup-prompt">
-      <p>Don't have an Account?</p>
-      <button
-        class=""
-        mat-stroked-button
-        color="primary"
-        routerLink="/auth/signup"
-      >
-        Sign Up
-      </button>
+      <div class="auth-form__signup-prompt">
+        <p>Don't have an Account?</p>
+        <button
+          class=""
+          mat-stroked-button
+          color="primary"
+          routerLink="/auth/signup"
+        >
+          Sign Up
+        </button>
+      </div>
     </div>
   </div>
 
-  <div class="auth-form auth-signup__form">
-    <div class="auth__logo">
-      <div class="auth__nav-header">
-        <figure class="auth__nav-logo">
-          <img src="/assets/svg/logo.svg" alt="Hotels Logo" />
-        </figure>
-        <h1>Hotels</h1>
+  <div
+    class="auth-form auth-signup__form"
+    [ngClass]="{ hideForm: isLoginFormVisible }"
+  >
+    <div
+      class="auth-form-container"
+      [ngClass]="{ hideSignUpFormContainer: isLoginFormVisible }"
+    >
+      <div class="auth__logo">
+        <div class="auth__nav-header">
+          <figure class="auth__nav-logo">
+            <img src="/assets/svg/logo.svg" alt="Hotels Logo" />
+          </figure>
+          <h1>Hotels</h1>
+        </div>
+      </div>
+
+      <div class="auth-form__header">
+        <h1>Sign Up</h1>
+        <p>Welcome!</p>
+        <p>
+          Create an account and get personalized hotel recommendations to make
+          the most out of your next trip.
+        </p>
+      </div>
+
+      <form class="auth-form__login">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" />
+        </mat-form-field>
+
+        <button
+          class="auth-form__login-button"
+          mat-raised-button
+          color="primary"
+        >
+          Sign Up
+        </button>
+      </form>
+
+      <div class="auth-form__signup-prompt">
+        <p>Have an Account?</p>
+        <button
+          class=""
+          mat-stroked-button
+          color="primary"
+          routerLink="/auth/login"
+        >
+          Sign In
+        </button>
       </div>
     </div>
-
-    <div class="auth-form__header">
-      <h1>Sign Up</h1>
-      <p>Welcome!</p>
-      <p>
-        Create an account and get personalized hotel recommendations to make the
-        most out of your next trip.
-      </p>
-    </div>
-
-    <form class="auth-form__login">
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" />
-      </mat-form-field>
-
-      <button class="auth-form__login-button" mat-raised-button color="primary">
-        Sign Up
-      </button>
-    </form>
-
-    <div class="auth-form__signup-prompt">
-      <p>Have an Account?</p>
-      <button
-        class=""
-        mat-stroked-button
-        color="primary"
-        routerLink="/auth/login"
-      >
-        Sign In
-      </button>
-    </div>
   </div>
-  <div class="auth-overlay">
-    <figure class="auth-overlay__wrapper">
-      <img
-        src="/assets/images/alexander-kaunas-xEaAoizNFV8-unsplash.jpg"
-        alt="Hotels Logo"
-      />
-    </figure>
+
+  <div class="auth-overlay" [ngClass]="{ loginFormActive: isLoginFormVisible }">
+    <div
+      class="auth-overlay-left"
+      [ngClass]="{ hideSignupOverlay: !isLoginFormVisible }"
+    >
+      <h2>New here?</h2>
+      <p>Sign up and discover great amount of new opportunities!</p>
+      <button mat-raised-button (click)="toggleOverlay()">Sign Up</button>
+    </div>
+    <div
+      class="auth-overlay-right"
+      [ngClass]="{ hideLoginOverlay: !isLoginFormVisible }"
+    >
+      <h2>One of us?</h2>
+      <p>If you already has an account, just sign in. We've missed you!</p>
+      <button mat-raised-button (click)="toggleOverlay()">Sign In</button>
+    </div>
   </div>
 </div>
