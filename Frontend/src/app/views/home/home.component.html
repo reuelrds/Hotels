@@ -35,6 +35,7 @@
     <div class="home-search__body">
       <form [formGroup]="searchForm" class="home__form">
         <div class="form__group">
+          <label for="name" class="form__label">Destination</label>
           <input
             type="text"
             class="form__input"
@@ -42,7 +43,6 @@
             id="name"
             formControlName="destination"
           />
-          <label for="name" class="form__label">Destination</label>
           <mat-icon>search</mat-icon>
         </div>
 

@@ -92,13 +92,12 @@
   }
 
   &-search {
-    margin-top: 5rem;
+    // margin-top: 5rem;
     height: 25rem;
     // background-color: rgba(255, 255, 255, 0.15);
     // backdrop-filter: blur(5px);
     background-color: $color-primary;
     color: #fff;
-
     grid-column: center-start / center-end;
     border-radius: 1rem;
     box-shadow: 0 1.5px 2.5px rgba(0, 0, 0, 0.163),
@@ -172,6 +171,11 @@
         left: 5%;
         transform: translateY(-50%);
       }
+    }
+
+    &-guests {
+      color: #fff;
+      align-self: flex-start;
     }
   }
 }
