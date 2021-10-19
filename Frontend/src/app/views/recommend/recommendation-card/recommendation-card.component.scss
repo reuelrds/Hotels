@@ -1,0 +1,120 @@
+@import "../../shared/styles/variables";
+
+.recommendation {
+  &-card {
+    // min-width: 100rem;
+    width: 80%;
+    height: 23rem;
+
+    font-family: "Cormorant", serif;
+
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 5rem;
+
+    box-shadow: 0.8px 1.7px 2.3px rgba(0, 0, 0, 0.034),
+      1.9px 4.1px 5.5px rgba(0, 0, 0, 0.048),
+      3.6px 7.8px 10.3px rgba(0, 0, 0, 0.06),
+      6.5px 13.8px 18.3px rgba(0, 0, 0, 0.072),
+      12.1px 25.9px 34.3px rgba(0, 0, 0, 0.086),
+      29px 62px 82px rgba(0, 0, 0, 0.12);
+
+    overflow: hidden;
+
+    display: flex;
+
+    &__image {
+      width: 23rem;
+
+      margin-right: 4rem;
+
+      & img {
+        width: 23rem;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__details {
+      display: flex;
+      flex-direction: column;
+
+      justify-content: space-between;
+
+      flex-grow: 1;
+    }
+
+    &__body {
+        &-reviews {
+            display: flex;
+            
+            font-size: 1.8rem;
+
+            // margin: 1rem 0;
+            margin-bottom: 1.5rem;
+        position: relative;
+        font-family: 'Times New Roman', Times, serif;
+        
+        & mat-icon {
+            font-size: 2rem;
+        }
+        
+        & span {
+            margin-left: 0.5rem;
+            color: #777;
+        }
+    }
+    
+    &-description {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+      &-title {
+          margin: 4rem 0;
+          & h2 {
+          font-size: 2.8rem;
+          font-weight: bolder;
+        //   margin-bottom: 0.5rem;
+          margin-bottom: 1rem;
+        }
+
+        & p {
+          font-size: 1.8rem;
+          color: #777;
+        }
+      }
+
+      &-price {
+        margin: 4rem;
+        margin-left: 0%;
+        text-align: end;
+
+        & p {
+          font-size: 4.8rem;
+          color: $color-secondary;
+          margin-right: 1rem;
+        }
+
+        & span {
+          color: rgb(3, 3, 3);
+          font-size: 1.6rem;
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: flex-end;
+      margin: 3rem;
+      margin-right: 0;
+      margin-bottom: 0;
+
+      & button {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+    }
+  }
+}

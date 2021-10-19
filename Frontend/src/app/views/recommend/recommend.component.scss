@@ -1,0 +1,211 @@
+@import "../shared/styles/variables";
+
+.recommend {
+  background-color: #f3f3f3;
+  font-family: "Cormorant", serif;
+
+  &__title {
+    font-size: 5.8rem;
+    margin: 8rem 5rem;
+    margin-bottom: 4rem;
+    font-weight: 300;
+    grid-column: full-start / col-end 8;
+    // padding-left: 5rem;
+  }
+
+  &__recommendations {
+    min-height: 85vh;
+
+    padding: 5rem;
+    padding-top: 0;
+
+    grid-column: full-start / col-end 8;
+    width: 100%;
+    // height: 100%;
+
+  }
+
+  &-form {
+    margin-top: 13.5rem;
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    padding: 5rem;
+    padding-top: 0;
+
+    grid-column: col-start 9 / full-end;
+
+    &__title {
+      font-size: 5.8rem;
+      margin: 3rem 0;
+      font-weight: 300;
+      visibility: hidden;
+    }
+  }
+}
+
+.form {
+  &__group {
+    margin-bottom: 3rem;
+
+    &:first-child &-input input {
+      width: 100%;
+    }
+
+    &-title {
+      font-size: 3.8rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    &-input {
+      display: flex;
+      position: relative;
+
+      &--dates {
+        display: flex;
+        justify-content: space-between;
+
+        & > * {
+          width: 47%;
+          // flex: 1 0 auto;
+
+          & input {
+            width: 100%;
+          }
+        }
+      }
+
+      & input {
+        padding-left: 6rem;
+        padding-right: 0rem;
+      }
+
+      & label {
+        padding-left: 4rem;
+      }
+
+      & mat-icon,
+      & mat-datepicker-toggle {
+        position: absolute;
+        top: 55%;
+        left: 3%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+.guests {
+  width: 47%;
+}
+.guests-field {
+  padding: 1.5rem 2rem;
+  padding-top: 2.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba($color-white, 1);
+  border: none;
+  // border-bottom: 3px solid transparent;
+  // width: 90%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+
+  position: relative;
+
+  &__label,
+  &__count {
+    margin-left: 4rem;
+    font-size: 1.6rem;
+  }
+
+  & .guest-icon {
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    transform: translateY(-50%);
+  }
+}
+
+.matMenu {
+  // width: 5rem !important;
+  // max-width: unset !important;
+
+  &__container {
+    padding: 3rem;
+    width: 30rem;
+  }
+
+  &__header {
+    color: $color-primary;
+    font-family: "Cormorant", serif;
+
+    font-size: 2.4rem;
+    font-weight: 700;
+
+    margin-bottom: 3rem;
+  }
+
+  &-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    &__title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & mat-icon {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  &__counter {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__button {
+    width: 100%;
+    margin-top: 3rem;
+  }
+
+  &__input {
+    font-size: 2rem;
+    font-family: inherit;
+    color: inherit;
+    // padding: 1.5rem 2rem;
+    // padding-top: 2.5rem;
+    width: 5rem;
+    border-radius: 0.5rem;
+    background-color: rgba($color-white, 1);
+    border: none;
+    border-bottom: 3px solid transparent;
+    // width: 90%;
+    // height: 100%;
+    display: block;
+    transition: all 0.3s;
+    text-align: center;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border-bottom: 3px solid $color-black;
+    }
+
+    &:focus:invalid {
+      border-bottom: 3px solid $color-black;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $color-black !important;
+      font-size: 1.6rem !important;
+    }
+  }
+}
+
+::ng-deep.mat-menu-panel {
+  max-width: fit-content !important;
+}

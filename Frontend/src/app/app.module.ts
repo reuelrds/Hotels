@@ -11,6 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRippleModule } from '@angular/material/core';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -18,9 +19,18 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { AuthComponent } from './views/auth/auth.component';
 import { NavbarComponent } from './views/shared/navbar/navbar.component';
+import { RecommendComponent } from './views/recommend/recommend.component';
+import { RecommendationCardComponent } from './views/recommend/recommendation-card/recommendation-card.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AuthComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AuthComponent,
+    NavbarComponent,
+    RecommendComponent,
+    RecommendationCardComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,6 +44,7 @@ import { NavbarComponent } from './views/shared/navbar/navbar.component';
     MatMenuModule,
     MatNativeDateModule,
     MatRippleModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

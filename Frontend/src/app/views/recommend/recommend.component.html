@@ -1,0 +1,175 @@
+<hotels-navbar></hotels-navbar>
+
+<div class="recommend container">
+  <div class="recommend__recommendations">
+    <div class="recommend__title">Your Recommendations</div>
+
+    <div class="cards">
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+      <hotels-recommendation-card></hotels-recommendation-card>
+    </div>
+  </div>
+
+  <div class="recommend-form">
+    <form [formGroup]="searchForm" class="form">
+      <div class="form__group">
+        <div class="form__group-title">Destination</div>
+
+        <div class="form__group-input">
+          <input
+            type="text"
+            class="form__input"
+            placeholder="e.g. Santorini, Greece"
+            id="name"
+            formControlName="destination"
+          />
+          <mat-icon>search</mat-icon>
+        </div>
+      </div>
+
+      <div class="form__group">
+        <div class="form__group-title">Dates</div>
+
+        <div class="form__group-input--dates">
+          <div class="form__group-input">
+            <input
+              placeholder="Check-In Date"
+              matInput
+              class="form__input checkInField"
+              [matDatepicker]="checkInPicker"
+              formControlName="checkinDate"
+            />
+            <label for="name" class="form__label">Check-In Date</label>
+            <mat-datepicker-toggle
+              [for]="checkInPicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #checkInPicker color="accent"></mat-datepicker>
+          </div>
+          <div class="form__group-input">
+            <input
+              placeholder="Check-Out Date"
+              matInput
+              class="form__input checkOutField"
+              [matDatepicker]="checkOutPicker"
+              formControlName="checkoutDate"
+            />
+            <label for="name" class="form__label">Check-Out Date</label>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="checkOutPicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #checkOutPicker color="accent"></mat-datepicker>
+          </div>
+        </div>
+      </div>
+
+      <div class="form__group guests">
+        <div class="form__group-title">Guests</div>
+        <div
+          class="guests-field"
+          matRipple
+          #menuTrigger="matMenuTrigger"
+          [matMenuTriggerFor]="menu"
+          (click)="menuTrigger.openMenu()"
+        >
+          <div class="guests-field__count">
+            {{ room_count }} Room, {{ guest_count }} Guests
+          </div>
+          <mat-icon class="guest-icon">people</mat-icon>
+        </div>
+        <mat-menu #menu="matMenu">
+          <div class="matMenu__container">
+            <div class="matMenu__header">Guests & Rooms</div>
+            <div class="matMenu-group" (click)="$event.stopPropagation()">
+              <div class="matMenu-group__title">
+                <mat-icon color="accent">bed</mat-icon>
+                Rooms
+              </div>
+              <div class="matMenu__counter">
+                <button mat-icon-button (click)="decreaseCount('rooms')">
+                  <mat-icon>remove_circle_outline</mat-icon>
+                </button>
+                <input
+                  type="text"
+                  name="Rooms"
+                  id="rooms"
+                  class="matMenu__input"
+                  formControlName="rooms"
+                />
+                <button mat-icon-button (click)="increaseCount('rooms')">
+                  <mat-icon>add_circle_outline</mat-icon>
+                </button>
+              </div>
+            </div>
+            <div class="matMenu-group" (click)="$event.stopPropagation()">
+              <div class="matMenu-group__title">
+                <mat-icon color="accent">person</mat-icon>
+                Guests
+              </div>
+              <div class="matMenu__counter">
+                <button mat-icon-button (click)="decreaseCount('guests')">
+                  <mat-icon>remove_circle_outline</mat-icon>
+                </button>
+                <input
+                  type="text"
+                  name="Guests"
+                  id="guests"
+                  class="matMenu__input"
+                  formControlName="guests"
+                />
+                <button mat-icon-button (click)="increaseCount('guests')">
+                  <mat-icon>add_circle_outline</mat-icon>
+                </button>
+              </div>
+            </div>
+
+            <button
+              mat-raised-button
+              color="primary"
+              class="matMenu__button"
+              (click)="updateRoomsAndGuests()"
+            >
+              Done
+            </button>
+          </div>
+        </mat-menu>
+      </div>
+
+      <div class="form__group">
+        <div class="form__group-title">Filters</div>
+
+        <mat-chip-list #chipList>
+          <mat-chip
+            *ngFor="let filter of filters"
+            [selected]="filter.selected"
+            (click)="onClick(filter.name)"
+          >
+            {{ filter.name }}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </form>
+  </div>
+</div>
