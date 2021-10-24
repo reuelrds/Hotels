@@ -121,7 +121,9 @@
     >
       <h2>New here?</h2>
       <p>Sign up and discover great amount of new opportunities!</p>
-      <button mat-raised-button (click)="toggleOverlay()">Sign Up</button>
+      <button mat-raised-button (click)="toggleOverlay()" color="accent">
+        Sign Up
+      </button>
     </div>
     <div
       class="auth-overlay-right"
@@ -129,7 +131,9 @@
     >
       <h2>One of us?</h2>
       <p>If you already has an account, just sign in. We've missed you!</p>
-      <button mat-raised-button (click)="toggleOverlay()">Sign In</button>
+      <button mat-raised-button (click)="toggleOverlay()" color="accent">
+        Sign In
+      </button>
     </div>
   </div>
 </div>

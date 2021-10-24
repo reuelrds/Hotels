@@ -135,7 +135,7 @@
     transform: translateX(-50%);
     // background-color: bisque;
 
-    transition: all 1s ease-in-out;
+    transition: all 2s ease-in-out;
     // background-image: url("/assets/images/alexander-kaunas-xEaAoizNFV8-unsplash.jpg");
     // background-size: cover;
 
@@ -168,19 +168,46 @@
       }
     }
 
+    &-left,
+    &-right {
+      font-family: "Cormorant", serif;
+
+      & h2 {
+        font-size: 3.4rem;
+        margin-bottom: 3rem;
+      }
+
+      & p {
+        font-size: 2.4rem;
+        font-weight: 300;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+        width: 60%;
+      }
+
+      & button {
+        color: $color-white;
+      }
+    }
+
     &-left {
       // width: 100%;
       // height: 100%;
       // position: absolute;
+      opacity: 1;
+      visibility: visible;
 
-      transition: all 1s ease-in-out;
+      // transition: transform 2s ease-in-out,  visibility 1s ease-in-out,  opacity 1s ease-in-out;
+      transition: transform 2.1s ease-in-out,
+        visibility 1.9s ease,
+        opacity 1.9s ease;
 
       text-align: center;
 
       &.hideSignupOverlay {
         // display: none;
-        visibility: hidden;
         opacity: 0;
+        visibility: hidden;
         transform: translateX(120vw);
       }
     }
@@ -191,7 +218,7 @@
 
       // height: 100%;
       // width: 100%;
-      transition: all 1s ease-in-out;
+      transition: all 2s ease-in-out;
       transform: translateX(-90vw);
       visibility: hidden;
       opacity: 0;
