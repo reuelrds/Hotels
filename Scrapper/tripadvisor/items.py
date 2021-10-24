@@ -18,13 +18,13 @@ class HotelItem(scrapy.Item):
     address = scrapy.Field(
         output_processor=TakeFirst()
     )
-    # unit_price = scrapy.Field(
-    #     input_processor=MapCompose(
-    #         preprocessers.strip_currency_symbol,
-    #         preprocessers.to_int,
-    #     ),
-    #     output_processor=TakeFirst()
-    # )
+    unit_price = scrapy.Field(
+        input_processor=MapCompose(
+            preprocessers.strip_currency_symbol,
+            preprocessers.to_int,
+        ),
+        output_processor=TakeFirst()
+    )
     rating = scrapy.Field(
         input_processor=MapCompose(preprocessers.to_float),
         output_processor=TakeFirst()
@@ -38,6 +38,10 @@ class HotelItem(scrapy.Item):
     )
     description = scrapy.Field(
         input_processor=MapCompose(preprocessers.process_description),
+        output_processor=TakeFirst()
+    )
+
+    hotel_id = scrapy.Field(
         output_processor=TakeFirst()
     )
     # amenities = scrapy.Field(

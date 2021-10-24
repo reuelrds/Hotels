@@ -1,6 +1,6 @@
 import peewee
 
-database = peewee.SqliteDatabase("./tripadvisor/database/hotels.db")
+database = peewee.SqliteDatabase("./tripadvisor/files/hotels.db")
 
 
 # Pewee related Setup
@@ -16,18 +16,22 @@ class Hotel(BaseModel):
         verbose_name="Unique ID"
     )
 
-    name = peewee.TextField(
+    hotel_id = peewee.TextField(
         index=True,
+        verbose_name="Hotel ID"
+    )
+
+    name = peewee.TextField(
         verbose_name="Hotel Name",
     )
     address = peewee.TextField(
         null=True,
         verbose_name="Hotel Address",
     )
-    # unit_price = peewee.IntegerField(
-    #     null=True,
-    #     verbose_name="Price for a Single Room",
-    # )
+    unit_price = peewee.IntegerField(
+        null=True,
+        verbose_name="Price for a Single Room",
+    )
     rating = peewee.FloatField(
         null=True,
         verbose_name="Hotel Rating",
@@ -39,6 +43,15 @@ class Hotel(BaseModel):
     description = peewee.TextField(
         null=True,
         verbose_name="Hotel Description",
+    )
+    city = peewee.TextField(
+        null=True,
+        verbose_name="Hotel City",
+    )
+
+    country= peewee.TextField(
+        null=True,
+        verbose_name="Hotel Country",
     )
     # amenities = peewee.TextField(
     #     null=True,

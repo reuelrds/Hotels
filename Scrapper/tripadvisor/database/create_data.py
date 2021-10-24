@@ -7,9 +7,10 @@ from tripadvisor.database.schema import Hotel
 def setup_database():
 
     try:
-        os.remove("./tripadvisor/database/hotels.db")
+        os.remove("./tripadvisor/files/hotels.db")
 
-    except OSError:
+    except OSError as err:
+        print(err)
         pass
 
     with database:

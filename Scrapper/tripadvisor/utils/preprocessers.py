@@ -1,11 +1,23 @@
 import json
 import re
 
+import lorem
+
 
 def process_description(text):
-    # description_dict = json.loads(text)
-    # return description_dict["load"][-1]["locationDescription"]
-    return text
+
+    if text[0] == "{":
+        try:
+            description_dict = json.loads(text)
+            return description_dict["load"][-1]["locationDescription"]
+        except:
+
+            try:
+                return description_dict["load"][-1]["partnerDescription"]["description"]
+            except:
+                return lorem.paragraph()
+    else:
+        return lorem.paragraph()
 
 
 def process_amenities(text):
@@ -26,7 +38,10 @@ def get_review_count(text):
 
 
 def to_int(text):
-    return int(text)
+    try:
+        return int(text)
+    except:
+        return
 
 
 def to_float(text):
