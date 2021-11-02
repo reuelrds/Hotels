@@ -231,7 +231,7 @@ def recommendation(location, text, top_n=3):
 # pprint(recommendation("calabria, italy","room", 10))
 
 
-print(recommendation("pisa, italy", "business trip", 7))
+# print(recommendation("pisa, italy", "business trip", 7))
 
 
 # In[25]:
