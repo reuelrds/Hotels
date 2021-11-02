@@ -1,11 +1,22 @@
 <div class="container">
-    
-    <nav class="navbar rounded-shadow">
-      <header class="navbar__header">
-        <figure class="navbar__logo">
-          <img src="/assets/svg/logo_white.svg" alt="Hotels Logo" />
-        </figure>
-        <h1>Hotels</h1>
-      </header>
-    </nav>
+  <nav class="navbar rounded-shadow">
+    <div class="navbar__pseudo-items"></div>
+    <header class="navbar__header">
+      <figure class="navbar__logo">
+        <img src="/assets/svg/logo_white.svg" alt="Hotels Logo" />
+      </figure>
+      <h1>Hotels</h1>
+    </header>
+    <div class="navbar__button">
+      <div class="navbar__button-text">Hello, {{ username }}</div>
+      <button mat-icon-button class="button" [matMenuTriggerFor]="menu">
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Update My Profile</button>
+        <button mat-menu-item>My Bookings</button>
+        <button mat-menu-item (click)="onLogout()">Logout</button>
+      </mat-menu>
+    </div>
+  </nav>
 </div>

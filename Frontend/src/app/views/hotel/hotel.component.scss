@@ -1,0 +1,363 @@
+@use "sass:map";
+@import "../shared/styles/variables";
+
+.hotel {
+  min-height: 100vh;
+  font-family: "Cormorant", serif;
+
+  overflow: hidden;
+  position: relative;
+
+  &__body {
+    grid-column: full-start / col-end 5;
+    background-color: map.get($accentpalette, 100);
+    padding: 4rem 8rem;
+  }
+
+  &__nav {
+    & button {
+      font-size: 3.5rem;
+      color: $color-primary;
+      width: 8rem;
+      height: 8rem;
+    }
+  }
+
+  &__header {
+    margin: 5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & h1 {
+      color: $color-primary;
+      font-size: 5rem;
+      font-weight: 400;
+    }
+
+    &-logo {
+      width: 4rem;
+      height: 4rem;
+      margin-right: 1.5rem;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &-body {
+    margin: 5rem 0;
+
+    &__title {
+      font-size: 5.2rem;
+      font-weight: 300;
+    }
+
+    &__review-summary {
+      margin: 1rem 0;
+      display: flex;
+    }
+
+    &__address {
+      font-size: 2.2rem;
+    }
+
+    &__description {
+      font-size: 2.2rem;
+      margin: 3rem 0;
+      line-height: 1.7;
+
+    }
+
+    &__reviews {
+      margin: 5rem 0;
+
+      & h2 {
+        font-size: 3.8rem;
+        font-weight: 300;
+      }
+    }
+
+    &__booking {
+        margin: 8rem 0;
+    }
+  }
+
+  &__image {
+    grid-column: col-start 6 / full-end;
+
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center center;
+    background-attachment: fixed;
+
+    // & img {
+    //   width: 100%;
+    //   height: 100%;
+    //   object-fit: cover;
+    // }
+  }
+}
+
+.review {
+  background-color: #fff;
+  padding: 2rem 4rem;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 4rem 0;
+
+  box-shadow: 0.8px 1.7px 2.3px rgba(0, 0, 0, 0.034),
+    1.9px 4.1px 5.5px rgba(0, 0, 0, 0.048),
+    3.6px 7.8px 10.3px rgba(0, 0, 0, 0.06),
+    6.5px 13.8px 18.3px rgba(0, 0, 0, 0.072),
+    12.1px 25.9px 34.3px rgba(0, 0, 0, 0.086),
+    29px 62px 82px rgba(0, 0, 0, 0.12);
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__reivewer-image {
+    width: 6rem;
+    height: 6rem;
+    margin: 2rem;
+    margin-left: 0;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  &__header-content {
+    h3 {
+      font-size: 2.8rem;
+      font-weight: 300;
+    }
+  }
+  &__body {
+    font-size: 2rem;
+    line-height: 1.7;
+    position: relative;
+    padding: 1em 4rem;
+    font-style: italic;
+
+    &::before {
+      font-family: "Arial";
+      content: "\201C";
+      color: map.get($primarypalette, 200);
+      font-size: 4em;
+      position: absolute;
+      left: 0;
+      top: -10px;
+    }
+  }
+}
+
+.form {
+  &__title {
+    font-size: 3.8rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  &__group {
+    margin-bottom: 3rem;
+
+    &-title {
+      font-size: 2.8rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    &-input {
+      display: flex;
+      position: relative;
+
+      &--dates {
+        display: flex;
+        justify-content: space-between;
+
+        & > * {
+          width: 47%;
+          // flex: 1 0 auto;
+
+          & input {
+            width: 100%;
+          }
+        }
+      }
+
+      & input {
+        padding-left: 6rem;
+        padding-right: 0rem;
+      }
+
+      & label {
+        padding-left: 4rem;
+      }
+
+      & mat-icon,
+      & mat-datepicker-toggle {
+        position: absolute;
+        top: 55%;
+        left: 3%;
+        transform: translateY(-50%);
+      }
+
+      & mat-icon {
+        color: rgba(0, 0, 0, 0.54);
+      }
+    }
+  }
+
+  &__button {
+    padding: 2rem 5rem;
+    border-radius: 1rem;
+    background-color: $color-primary;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0.8px 1.7px 2.3px rgba(0, 0, 0, 0.034),
+      1.9px 4.1px 5.5px rgba(0, 0, 0, 0.048),
+      3.6px 7.8px 10.3px rgba(0, 0, 0, 0.06),
+      6.5px 13.8px 18.3px rgba(0, 0, 0, 0.072),
+      12.1px 25.9px 34.3px rgba(0, 0, 0, 0.086),
+      29px 62px 82px rgba(0, 0, 0, 0.12);
+
+    // position: absolute;
+    // bottom: -10%;
+    // right: 6rem;
+
+    font-size: 2rem;
+    font-family: "Cormorant", serif;
+    display: inline-flex;
+    align-items: center;
+
+    & mat-icon {
+      margin-left: 2rem;
+    }
+  }
+}
+
+.matMenu {
+  // width: 5rem !important;
+  // max-width: unset !important;
+
+  &__container {
+    padding: 3rem;
+    width: 30rem;
+  }
+
+  &__header {
+    color: $color-primary;
+    font-family: "Cormorant", serif;
+
+    font-size: 2.4rem;
+    font-weight: 700;
+
+    margin-bottom: 3rem;
+  }
+
+  &-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    &__title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & mat-icon {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  &__counter {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__button {
+    width: 100%;
+    margin-top: 3rem;
+  }
+
+  &__input {
+    font-size: 2rem;
+    font-family: inherit;
+    color: inherit;
+    // padding: 1.5rem 2rem;
+    // padding-top: 2.5rem;
+    width: 5rem;
+    border-radius: 0.5rem;
+    background-color: rgba($color-white, 1);
+    border: none;
+    border-bottom: 3px solid transparent;
+    // width: 90%;
+    // height: 100%;
+    display: block;
+    transition: all 0.3s;
+    text-align: center;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border-bottom: 3px solid $color-black;
+    }
+
+    &:focus:invalid {
+      border-bottom: 3px solid $color-black;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $color-black !important;
+      font-size: 1.6rem !important;
+    }
+  }
+}
+
+::ng-deep.mat-menu-panel {
+  max-width: fit-content !important;
+}
+
+.guests {
+  width: 47%;
+}
+.guests-field {
+  padding: 1.5rem 2rem;
+  padding-top: 2.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba($color-white, 1);
+  border: none;
+  // border-bottom: 3px solid transparent;
+  // width: 90%;
+  height: 6.7rem;
+  display: block;
+  cursor: pointer;
+
+  position: relative;
+
+  &__label,
+  &__count {
+    margin-left: 4rem;
+    font-size: 1.6rem;
+  }
+
+  & .guest-icon {
+    position: absolute;
+    top: 55%;
+    left: 6%;
+    transform: translateY(-50%);
+    color: rgba(0, 0, 0, 0.54);
+  }
+}

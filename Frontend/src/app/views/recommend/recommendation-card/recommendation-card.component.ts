@@ -1,24 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'hotels-recommendation-card',
   templateUrl: './recommendation-card.component.html',
-  styleUrls: ['./recommendation-card.component.scss']
+  styleUrls: ['./recommendation-card.component.scss'],
 })
 export class RecommendationCardComponent implements OnInit {
+  @Input() price = 120;
+  @Input() unit_price = 120;
+  @Input() rating = 4.9;
+  @Input() review_count = 524;
+  @Input() hotel_name = 'Lorem';
+  @Input() image_url = '/assets/images/hotel_room1.jpg';
+  @Input() hotel_id = '';
 
-  reviews = 4.9
-  review_count = 524
+  @Input() hotel_address =
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit.';
 
-  hotel_name = "Lorem"
-  hotel_address = "Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Lorem IpsumDolor Sit Amet, Lorem Ipsum Dolor Sit Amet, Lorem IpsumDolor Sit Amet, Lorem Ipsum"
-  price = 120
+  @Output() hotelDetailsEvent = new EventEmitter();
 
-  hotel_image = "/assets/images/hotel_room1.jpg"
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  onViewHotelDetails() {
+    this.hotelDetailsEvent.emit(this.hotel_id);
   }
-
 }

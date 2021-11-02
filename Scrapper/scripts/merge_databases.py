@@ -11,8 +11,7 @@ def merge_databases(db1, db2):
 
     con3.execute("BEGIN")
     for row in con3.execute("SELECT * FROM dba.sqlite_master WHERE type='table'"):
-        combine = "INSERT OR IGNORE INTO " + \
-            row[1] + " SELECT * FROM dba." + row[1]
+        combine = "INSERT OR IGNORE INTO " + row[1] + " SELECT * FROM dba." + row[1]
         print(combine)
         con3.execute(combine)
     con3.commit()
@@ -25,7 +24,7 @@ def read_files(directory):
         for f in f_names:
             c_name = os.path.join(root, f)
             filename, file_extension = os.path.splitext(c_name)
-            if (file_extension == '.db'):
+            if file_extension == ".db":
                 fname.append(c_name)
 
     return fname
@@ -37,6 +36,6 @@ def batch_merge(directory):
         merge_databases(db_files[0], db_file)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     database_dir = "../tripadvisor/files"
     batch_merge(database_dir)

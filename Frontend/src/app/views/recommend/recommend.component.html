@@ -5,35 +5,37 @@
     <div class="recommend__title">Your Recommendations</div>
 
     <div class="cards">
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
-      <hotels-recommendation-card></hotels-recommendation-card>
+      <mat-progress-spinner
+        mode="indeterminate"
+        *ngIf="isLoading; else elseBlockShow"
+      ></mat-progress-spinner>
+
+      <ng-template #elseBlockShow>
+        <div class="cards__text">
+          {{ message }}
+        </div>
+
+        <hotels-recommendation-card
+          *ngFor="let hotel of hotels"
+          [hotel_name]="hotel.name"
+          [hotel_address]="hotel.address"
+          [review_count]="hotel.review_count"
+          [rating]="hotel.rating"
+          [unit_price]="hotel.unit_price"
+          [price]="hotel.total_price"
+          [image_url]="hotel.image_url"
+          [hotel_id]="hotel.hotel_id"
+          (hotelDetailsEvent)="onDisplayHotelDetails($event)"
+        ></hotels-recommendation-card>
+      </ng-template>
+
+      <!-- <hotels-recommendation-card></hotels-recommendation-card> -->
     </div>
   </div>
 
   <div class="recommend-form">
-    <form [formGroup]="searchForm" class="form">
+    <div class="form__title">Search Form</div>
+    <form [formGroup]="searchForm" class="form" (ngSubmit)="onSubmit()">
       <div class="form__group">
         <div class="form__group-title">Destination</div>
 
@@ -42,9 +44,18 @@
             type="text"
             class="form__input"
             placeholder="e.g. Santorini, Greece"
-            id="name"
+            id="destination"
             formControlName="destination"
+            [matAutocomplete]="auto"
           />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let destination of filteredDestinations"
+              [value]="destination"
+            >
+              {{ destination }}
+            </mat-option>
+          </mat-autocomplete>
           <mat-icon>search</mat-icon>
         </div>
       </div>
@@ -56,120 +67,161 @@
           <div class="form__group-input">
             <input
               placeholder="Check-In Date"
-              matInput
               class="form__input checkInField"
               [matDatepicker]="checkInPicker"
               formControlName="checkinDate"
+              [min]="mincheckinDate"
+              (focus)="checkInPicker.open()"
+              #checkIn
             />
             <label for="name" class="form__label">Check-In Date</label>
             <mat-datepicker-toggle
               [for]="checkInPicker"
             ></mat-datepicker-toggle>
-            <mat-datepicker #checkInPicker color="accent"></mat-datepicker>
+            <mat-datepicker
+              #checkInPicker
+              color="accent"
+              (closed)="checkIn.blur()"
+            ></mat-datepicker>
           </div>
           <div class="form__group-input">
             <input
               placeholder="Check-Out Date"
-              matInput
               class="form__input checkOutField"
               [matDatepicker]="checkOutPicker"
               formControlName="checkoutDate"
+              [min]="mincheckoutDate"
+              (focus)="checkOutPicker.open()"
+              #checkOut
             />
             <label for="name" class="form__label">Check-Out Date</label>
             <mat-datepicker-toggle
               matSuffix
               [for]="checkOutPicker"
             ></mat-datepicker-toggle>
-            <mat-datepicker #checkOutPicker color="accent"></mat-datepicker>
+            <mat-datepicker
+              #checkOutPicker
+              color="accent"
+              (closed)="checkOut.blur()"
+            ></mat-datepicker>
           </div>
         </div>
       </div>
 
-      <div class="form__group guests">
-        <div class="form__group-title">Guests</div>
-        <div
-          class="guests-field"
-          matRipple
-          #menuTrigger="matMenuTrigger"
-          [matMenuTriggerFor]="menu"
-          (click)="menuTrigger.openMenu()"
-        >
-          <div class="guests-field__count">
-            {{ room_count }} Room, {{ guest_count }} Guests
-          </div>
-          <mat-icon class="guest-icon">people</mat-icon>
-        </div>
-        <mat-menu #menu="matMenu">
-          <div class="matMenu__container">
-            <div class="matMenu__header">Guests & Rooms</div>
-            <div class="matMenu-group" (click)="$event.stopPropagation()">
-              <div class="matMenu-group__title">
-                <mat-icon color="accent">bed</mat-icon>
-                Rooms
-              </div>
-              <div class="matMenu__counter">
-                <button mat-icon-button (click)="decreaseCount('rooms')">
-                  <mat-icon>remove_circle_outline</mat-icon>
-                </button>
-                <input
-                  type="text"
-                  name="Rooms"
-                  id="rooms"
-                  class="matMenu__input"
-                  formControlName="rooms"
-                />
-                <button mat-icon-button (click)="increaseCount('rooms')">
-                  <mat-icon>add_circle_outline</mat-icon>
-                </button>
-              </div>
-            </div>
-            <div class="matMenu-group" (click)="$event.stopPropagation()">
-              <div class="matMenu-group__title">
-                <mat-icon color="accent">person</mat-icon>
-                Guests
-              </div>
-              <div class="matMenu__counter">
-                <button mat-icon-button (click)="decreaseCount('guests')">
-                  <mat-icon>remove_circle_outline</mat-icon>
-                </button>
-                <input
-                  type="text"
-                  name="Guests"
-                  id="guests"
-                  class="matMenu__input"
-                  formControlName="guests"
-                />
-                <button mat-icon-button (click)="increaseCount('guests')">
-                  <mat-icon>add_circle_outline</mat-icon>
-                </button>
-              </div>
-            </div>
-
-            <button
-              mat-raised-button
-              color="primary"
-              class="matMenu__button"
-              (click)="updateRoomsAndGuests()"
-            >
-              Done
-            </button>
-          </div>
-        </mat-menu>
-      </div>
-
-      <div class="form__group">
-        <div class="form__group-title">Filters</div>
-
-        <mat-chip-list #chipList>
-          <mat-chip
-            *ngFor="let filter of filters"
-            [selected]="filter.selected"
-            (click)="onClick(filter.name)"
+      <div class="form-flex">
+        <div class="form__group guests">
+          <div class="form__group-title">Guests</div>
+          <div
+            class="guests-field"
+            matRipple
+            #menuTrigger="matMenuTrigger"
+            [matMenuTriggerFor]="menu"
+            (click)="menuTrigger.openMenu()"
           >
-            {{ filter.name }}
-          </mat-chip>
-        </mat-chip-list>
+            <div class="guests-field__count">
+              {{ room_count }} Room, {{ guest_count }} Guests
+            </div>
+            <mat-icon class="guest-icon">people</mat-icon>
+          </div>
+          <mat-menu #menu="matMenu">
+            <div class="matMenu__container">
+              <div class="matMenu__header">Guests & Rooms</div>
+              <div class="matMenu-group" (click)="$event.stopPropagation()">
+                <div class="matMenu-group__title">
+                  <mat-icon color="accent">bed</mat-icon>
+                  Rooms
+                </div>
+                <div class="matMenu__counter">
+                  <button mat-icon-button (click)="decreaseCount('rooms')">
+                    <mat-icon>remove_circle_outline</mat-icon>
+                  </button>
+                  <input
+                    type="text"
+                    name="Rooms"
+                    id="rooms"
+                    class="matMenu__input"
+                    formControlName="rooms"
+                  />
+                  <button mat-icon-button (click)="increaseCount('rooms')">
+                    <mat-icon>add_circle_outline</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="matMenu-group" (click)="$event.stopPropagation()">
+                <div class="matMenu-group__title">
+                  <mat-icon color="accent">person</mat-icon>
+                  Guests
+                </div>
+                <div class="matMenu__counter">
+                  <button mat-icon-button (click)="decreaseCount('guests')">
+                    <mat-icon>remove_circle_outline</mat-icon>
+                  </button>
+                  <input
+                    type="text"
+                    name="Guests"
+                    id="guests"
+                    class="matMenu__input"
+                    formControlName="guests"
+                  />
+                  <button mat-icon-button (click)="increaseCount('guests')">
+                    <mat-icon>add_circle_outline</mat-icon>
+                  </button>
+                </div>
+              </div>
+
+              <button
+                mat-raised-button
+                color="primary"
+                class="matMenu__button"
+                (click)="updateRoomsAndGuests()"
+              >
+                Done
+              </button>
+            </div>
+          </mat-menu>
+        </div>
+
+        <!-- <div class="form__group">
+          <div class="form__group-title">Filters</div>
+
+          <mat-chip-list #chipList>
+            <mat-chip
+              *ngFor="let filter of filters"
+              [selected]="filter.selected"
+              (click)="onClick(filter.name)"
+            >
+              {{ filter.name }}
+            </mat-chip>
+          </mat-chip-list>
+        </div> -->
+        <div class="form__group">
+          <div class="form__group-title">Aspect Filters</div>
+
+          <div class="form__group-input">
+            <input
+              type="text"
+              class="form__input"
+              placeholder="e.g. Value"
+              id="aspectFilter"
+              formControlName="aspectFilter"
+              [matAutocomplete]="autoAspectFilter"
+            />
+            <mat-autocomplete #autoAspectFilter="matAutocomplete">
+              <mat-option
+                *ngFor="let filteredAspect of filteredAspects"
+                [value]="filteredAspect"
+              >
+                {{ filteredAspect }}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-icon>filter_alt</mat-icon>
+          </div>
+        </div>
       </div>
+      <button matRipple class="form__button" type="submit">
+        Search Hotels
+        <mat-icon>trending_flat</mat-icon>
+      </button>
     </form>
   </div>
 </div>

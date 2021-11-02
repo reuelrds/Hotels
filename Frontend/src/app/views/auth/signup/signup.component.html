@@ -1,0 +1,53 @@
+<div class="auth__logo">
+  <div class="auth__nav-header">
+    <figure class="auth__nav-logo">
+      <img src="/assets/svg/logo.svg" alt="Hotels Logo" />
+    </figure>
+    <h1>Hotels</h1>
+  </div>
+</div>
+
+<div class="auth-form__header">
+  <h1>Sign Up</h1>
+  <p>Welcome!</p>
+  <p>
+    Create an account and get personalized hotel recommendations to make the
+    most out of your next trip.
+  </p>
+</div>
+
+<form class="auth-form__login" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" formControlName="email" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput type="text" formControlName="username" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password" />
+  </mat-form-field>
+
+  <button
+    class="auth-form__login-button"
+    mat-raised-button
+    color="primary"
+    type="submit"
+  >
+    Sign Up
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="16"
+      *ngIf="isLoading"
+    ></mat-progress-spinner>
+  </button>
+</form>
+
+<div class="auth-form__signup-prompt">
+  <p>Have an Account?</p>
+  <button class="" mat-stroked-button color="primary" routerLink="/auth/login">
+    Sign In
+  </button>
+</div>

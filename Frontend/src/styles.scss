@@ -91,15 +91,17 @@ body {
   min-height: 100vh;
   min-width: 100vw;
   font-size: 1.6rem;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
   height: 0.5rem;
-  width: 0.5rem;
+  width: 0.6rem;
+  background-color: rgb(190, 188, 188);
 
   &-thumb {
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.26);
+    background: rgba(0, 0, 0, 0.4);
   }
 }
 

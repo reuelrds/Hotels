@@ -11,12 +11,40 @@
 
     <!-- Nav Buttons -->
     <div class="home__nav-buttons">
-      <button mat-raised-button color="accent" routerLink="auth/login">
-        Sign in
-      </button>
-      <button mat-raised-button color="primary" routerLink="auth/signup">
-        Sign Up
-      </button>
+      <ng-container *ngIf="!isLoggedIn; else loggedInTemplate">
+        <button
+          class="home__nav-buttons-button"
+          mat-raised-button
+          color="accent"
+          routerLink="auth/login"
+        >
+          Sign in
+        </button>
+        <button
+          class="home__nav-buttons-button"
+          mat-raised-button
+          color="primary"
+          routerLink="auth/signup"
+        >
+          Sign Up
+        </button>
+      </ng-container>
+
+      <ng-template #loggedInTemplate>
+        <div class="home__nav-buttons-text">Hello, {{ username }}</div>
+        <button
+          mat-icon-button
+          class="home__nav-buttons--drop-down"
+          [matMenuTriggerFor]="menu"
+        >
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Update My Profile</button>
+          <button mat-menu-item>My Bookings</button>
+          <button mat-menu-item (click)="onLogout()">Logout</button>
+        </mat-menu>
+      </ng-template>
     </div>
   </nav>
 
@@ -35,47 +63,70 @@
     <div class="home-search__body">
       <form [formGroup]="searchForm" class="home__form">
         <div class="form__group">
-          <label for="name" class="form__label">Destination</label>
+          <label for="destination" class="form__label">Destination</label>
           <input
             type="text"
             class="form__input"
             placeholder="e.g. Santorini, Greece"
-            id="name"
+            id="destination"
             formControlName="destination"
+            [matAutocomplete]="auto"
           />
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let destination of filteredDestinations"
+              [value]="destination"
+            >
+              {{ destination }}
+            </mat-option>
+          </mat-autocomplete>
           <mat-icon>search</mat-icon>
         </div>
 
         <div class="form__group">
           <input
             placeholder="Check-In Date"
-            matInput
             class="form__input checkInField"
             [matDatepicker]="checkInPicker"
             formControlName="checkinDate"
+            id="checkinDate"
+            [min]="mincheckinDate"
+            (focus)="checkInPicker.open()"
+            #checkIn
           />
-          <label for="name" class="form__label">Check-In Date</label>
+          <label for="checkinDate" class="form__label">Check-In Date</label>
           <mat-datepicker-toggle
             matSuffix
             [for]="checkInPicker"
           ></mat-datepicker-toggle>
-          <mat-datepicker #checkInPicker color="accent"></mat-datepicker>
+          <mat-datepicker
+            #checkInPicker
+            color="accent"
+            (closed)="checkIn.blur()"
+          ></mat-datepicker>
         </div>
 
         <div class="form__group">
           <input
             placeholder="Check-Out Date"
-            matInput
             class="form__input checkOutField"
             [matDatepicker]="checkOutPicker"
             formControlName="checkoutDate"
+            id="checkoutDate"
+            [min]="mincheckoutDate"
+            (focus)="checkOutPicker.open()"
+            #checkOut
           />
-          <label for="name" class="form__label">Check-Out Date</label>
+          <label for="checkoutDate" class="form__label">Check-Out Date</label>
           <mat-datepicker-toggle
             matSuffix
             [for]="checkOutPicker"
           ></mat-datepicker-toggle>
-          <mat-datepicker #checkOutPicker color="accent"></mat-datepicker>
+          <mat-datepicker
+            #checkOutPicker
+            color="accent"
+            (closed)="checkOut.blur()"
+          ></mat-datepicker>
         </div>
 
         <div class="form__group guests">
@@ -152,7 +203,7 @@
       </form>
     </div>
 
-    <button class="home-search__button" (click)="onFormSubmit()">
+    <button matRipple class="home-search__button" (click)="onFormSubmit()">
       Search Hotels
       <mat-icon>trending_flat</mat-icon>
     </button>

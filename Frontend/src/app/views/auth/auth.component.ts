@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'hotels-auth',
@@ -8,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class AuthComponent implements OnInit {
   isLoginFormVisible = true;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.router.url);
+
+    if (this.router.url === '/auth/signup') {
+      this.toggleOverlay();
+    }
+  }
 
   toggleOverlay() {
     console.log(this.isLoginFormVisible);

@@ -4,18 +4,15 @@
   min-height: 100vh;
   font-family: "Cormorant", serif;
 
-  // place-items: center;
   overflow: hidden;
   position: relative;
-
-  // background-color: rgba($color-text-light, 0.2);
 
   background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.52),
       rgba(0, 0, 0, 0.73)
     ),
-    url("/assets/images/alexander-kaunas-xEaAoizNFV8-unsplash.jpg");
+    url("/assets/images/visualsofdana-T5pL6ciEn-I-unsplash.jpg");
   background-size: cover;
 
   &__logo {
@@ -23,29 +20,22 @@
   }
 
   &-login__form {
-    // background-color: rgba($color-text-light, 0.2);
     background-color: #edf1f5;
     grid-column: full-start / col-end 4;
     transition: all 2s ease-in-out;
     overflow: hidden;
 
     &.hideForm {
-      // visibility: hidden;
-      // opacity: 0;
-      // z-index: -1;
       transform: translateX(-60vw);
     }
   }
+
   &-signup__form {
     grid-column: col-start 9 / full-end;
     background-color: #edf1f5;
     overflow: hidden;
-    // background-color: rgba($color-text-light, 0.2);
     transition: all 2s ease-in-out;
     &.hideForm {
-      // opacity: 0;
-      // visibility: hidden;
-      //   // z-index: -1;
       transform: translateX(60vw);
     }
   }
@@ -55,9 +45,6 @@
     transition: all 2s ease-in-out;
 
     &.hideFormContainer {
-      // visibility: hidden;
-      // opacity: 0;
-      // z-index: -1;
       transform: translateX(120vw);
     }
 
@@ -67,94 +54,31 @@
   }
 
   &-form {
-    // z-index: 100;
     position: relative;
     height: 100%;
-    // width: 50%;
     text-align: center;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    &__header {
-      & h1 {
-        font-size: 3.2rem;
-        font-weight: 700;
-        margin-bottom: 3rem;
-      }
-
-      & p {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-        width: 90%;
-        margin: auto;
-      }
-    }
-
-    &__login {
-      margin: 5rem 0;
-      width: 100%;
-
-      & > * {
-        display: block;
-      }
-
-      &-button {
-        width: 100%;
-        margin-top: 2rem;
-      }
-    }
-
-    &__signup-prompt {
-      & p {
-        display: inline-block;
-        margin-right: 1rem;
-      }
-    }
   }
-
-  // .auth-image-overlay {
-  //   position: absolute;
-  //   height: 100vh;
-  //   width: 100%;
-  // }
 
   &-overlay {
     position: absolute;
     height: 100vh;
     width: 100%;
     color: $color-white;
-    // grid-column: col-start 5 / full-end;
-    // grid-column: full-start / col-end 8;
     display: grid;
     grid-template-columns: 1fr 1fr;
     place-items: center;
-    // left: -50%;
     transform: translateX(-50%);
-    // background-color: bisque;
 
     transition: all 2s ease-in-out;
-    // background-image: url("/assets/images/alexander-kaunas-xEaAoizNFV8-unsplash.jpg");
-    // background-size: cover;
 
     &.loginFormActive {
-      // left: 50%;
       transform: translateX(50%);
     }
-
-    // &::before {
-    //   content: "";
-    //   // position: sticky;
-    //   // z-index: -1;
-    //   // top: 0;
-    //   // left: 0;
-    //   // width: 100%;
-    //   // height: 100%;
-    //   background-image: url("/assets/images/alexander-kaunas-xEaAoizNFV8-unsplash.jpg");
-    //   background-size: cover;
-    // }
 
     &__wrapper {
       width: 100%;
@@ -191,21 +115,15 @@
     }
 
     &-left {
-      // width: 100%;
-      // height: 100%;
-      // position: absolute;
       opacity: 1;
       visibility: visible;
 
-      // transition: transform 2s ease-in-out,  visibility 1s ease-in-out,  opacity 1s ease-in-out;
-      transition: transform 2.1s ease-in-out,
-        visibility 1.9s ease,
+      transition: transform 2.1s ease-in-out, visibility 1.9s ease,
         opacity 1.9s ease;
 
       text-align: center;
 
       &.hideSignupOverlay {
-        // display: none;
         opacity: 0;
         visibility: hidden;
         transform: translateX(120vw);
@@ -216,8 +134,6 @@
       text-align: center;
       position: absolute;
 
-      // height: 100%;
-      // width: 100%;
       transition: all 2s ease-in-out;
       transform: translateX(-90vw);
       visibility: hidden;
@@ -227,44 +143,6 @@
         transform: translateX(30vw);
         visibility: visible;
         opacity: 1;
-      }
-    }
-  }
-
-  &__nav {
-    margin: 5rem 0;
-    grid-column: full-start / full-end;
-
-    display: flex;
-    align-items: center;
-
-    justify-content: center;
-
-    &-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-family: "Cormorant", serif;
-
-      & h1 {
-        color: $color-primary;
-        font-size: 4rem;
-        font-weight: 700;
-        // text-transform: uppercase;
-      }
-    }
-
-    &-logo {
-      width: 4rem;
-      height: 4rem;
-      margin-right: 1.5rem;
-
-      & img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
       }
     }
   }

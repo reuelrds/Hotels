@@ -7,51 +7,7 @@
       class="auth-form-container"
       [ngClass]="{ hideFormContainer: !isLoginFormVisible }"
     >
-      <div class="auth__logo">
-        <div class="auth__nav-header">
-          <figure class="auth__nav-logo">
-            <img src="/assets/svg/logo.svg" alt="Hotels Logo" />
-          </figure>
-          <h1>Hotels</h1>
-        </div>
-      </div>
-
-      <div class="auth-form__header">
-        <h1>Sign In</h1>
-        <p>Welcome Back!</p>
-        <p>Sign In to get the best hotel recommendations for your next trip.</p>
-      </div>
-
-      <form class="auth-form__login">
-        <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
-          <input matInput type="email" />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
-          <input matInput type="password" />
-        </mat-form-field>
-
-        <button
-          class="auth-form__login-button"
-          mat-raised-button
-          color="primary"
-        >
-          Sign in
-        </button>
-      </form>
-
-      <div class="auth-form__signup-prompt">
-        <p>Don't have an Account?</p>
-        <button
-          class=""
-          mat-stroked-button
-          color="primary"
-          routerLink="/auth/signup"
-        >
-          Sign Up
-        </button>
-      </div>
+      <hotels-login></hotels-login>
     </div>
   </div>
 
@@ -63,54 +19,7 @@
       class="auth-form-container"
       [ngClass]="{ hideSignUpFormContainer: isLoginFormVisible }"
     >
-      <div class="auth__logo">
-        <div class="auth__nav-header">
-          <figure class="auth__nav-logo">
-            <img src="/assets/svg/logo.svg" alt="Hotels Logo" />
-          </figure>
-          <h1>Hotels</h1>
-        </div>
-      </div>
-
-      <div class="auth-form__header">
-        <h1>Sign Up</h1>
-        <p>Welcome!</p>
-        <p>
-          Create an account and get personalized hotel recommendations to make
-          the most out of your next trip.
-        </p>
-      </div>
-
-      <form class="auth-form__login">
-        <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
-          <input matInput type="email" />
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
-          <input matInput type="password" />
-        </mat-form-field>
-
-        <button
-          class="auth-form__login-button"
-          mat-raised-button
-          color="primary"
-        >
-          Sign Up
-        </button>
-      </form>
-
-      <div class="auth-form__signup-prompt">
-        <p>Have an Account?</p>
-        <button
-          class=""
-          mat-stroked-button
-          color="primary"
-          routerLink="/auth/login"
-        >
-          Sign In
-        </button>
-      </div>
+      <hotels-signup></hotels-signup>
     </div>
   </div>
 

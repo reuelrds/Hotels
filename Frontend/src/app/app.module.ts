@@ -21,6 +21,17 @@ import { AuthComponent } from './views/auth/auth.component';
 import { NavbarComponent } from './views/shared/navbar/navbar.component';
 import { RecommendComponent } from './views/recommend/recommend.component';
 import { RecommendationCardComponent } from './views/recommend/recommendation-card/recommendation-card.component';
+import { LoginComponent } from './views/auth/login/login.component';
+import { SignupComponent } from './views/auth/signup/signup.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './core/auth.interceptor';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { HotelComponent } from './views/hotel/hotel.component';
+
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   declarations: [
@@ -30,6 +41,9 @@ import { RecommendationCardComponent } from './views/recommend/recommendation-ca
     NavbarComponent,
     RecommendComponent,
     RecommendationCardComponent,
+    LoginComponent,
+    SignupComponent,
+    HotelComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,8 +59,16 @@ import { RecommendationCardComponent } from './views/recommend/recommendation-ca
     MatNativeDateModule,
     MatRippleModule,
     MatChipsModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatOptionModule,
+    MatAutocompleteModule,
+    RatingModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
