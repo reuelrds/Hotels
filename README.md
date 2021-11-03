@@ -10,14 +10,12 @@ Table of Contents:
   - [Scrapper](#scrapper)
   - [Frontend](#frontend)
   - [Backend](#backend)
-- [Project Setup](#project-setup)
-- [Run the Project](#run-the-project)
+  - [Project Setup](#project-setup)
+    - [Clone this Repo](#clone-this-repo)
+  - [Run the Project](#run-the-project)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
-&nbsp;  
-
----
 
 ## Scrapper
 
@@ -41,9 +39,7 @@ We used Rotating Proxies from [ScraperApi](https://www.scraperapi.com/) to get a
 
 After, scrpaing we post processed the data to add the Hotel's Reviews, City, and Country from the Dataset used for Machine Learning.
 
-&nbsp;  
 
----
 
 ## Frontend
 
@@ -72,9 +68,7 @@ The `core` folder has a typescript file which protects (does not allow users to 
 Also, all the image assets are taken from [Unsplash](https://unsplash.com/).
 
 
-&nbsp;  
 
----
 
 ## Backend
 
@@ -99,10 +93,17 @@ The `/hotels` and the `/reviews/:hotel_id` endpoints are protected and cannot be
 The Frontend has an TypeScript File in the `core` folder which intercepts all the requests from the `Services` to the backend. It adds this `Authentication` header to the request, if the user is logged in, before sending it to the backend.
 
 
-# Project Setup
+## Project Setup
 
-***TODO:  Add in steps about how to setup the project***
+***TODO:  Update steps about how to setup the project***
 
-# Run the Project
+### Clone this Repo
+
+```bash
+> git clone https://github.com/smounika459/Final-Project.git
+> cd Final-Project
+```
+
+## Run the Project
 
 ***TODO:  Add in steps about how to tun the project***
