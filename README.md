@@ -5,6 +5,8 @@
 A simple website for displaying Hotel Recommendations.  
 The Front End is built using the Angular Framework, while the Backend has a REST API built using the Flask Framework and uses SQLite database to store data.
 
+Currently only supports Desktop Resolution (1920x1080)
+
 &nbsp;  
 
 Table of Contents:
@@ -102,8 +104,8 @@ The Frontend has an TypeScript File in the `core` folder which intercepts all th
 ### Clone this Repo
 
 ```bash
-> git clone https://github.com/smounika459/Final-Project.git
-> cd Final-Project
+> git clone https://github.com/reuelrds/Hotels.git
+> cd Hotels
 ```
 
 ## Run the Project
