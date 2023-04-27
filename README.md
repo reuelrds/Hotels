@@ -1,4 +1,6 @@
-# Final-Project
+# Hotels
+
+***Live Demo:*** [https://hotels.reuelrds.me](https://hotels.reuelrds.me/)
 
 A simple website for displaying Hotel Recommendations.  
 The Front End is built using the Angular Framework, while the Backend has a REST API built using the Flask Framework and uses SQLite database to store data.
